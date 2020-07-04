@@ -84,6 +84,10 @@ ifeq '$(pulp_chip_family)' 'pulpissimo_v2'
 PULP_LIB_FC_SRCS_rt     += kernel/fll-v$(fll/version).c
 PULP_LIB_FC_SRCS_rt     += kernel/freq-one-per-domain.c
 else
+ifeq '$(pulp_chip_family)' 'stellissimo'
+PULP_LIB_FC_SRCS_rt     += kernel/fll-v$(fll/version).c
+PULP_LIB_FC_SRCS_rt     += kernel/freq-one-per-domain.c
+else
 ifeq '$(pulp_chip_family)' 'vega'
 PULP_LIB_FC_SRCS_rt     += kernel/fll-v$(fll/version).c
 PULP_LIB_FC_SRCS_rt     += kernel/freq-one-per-domain.c
@@ -94,6 +98,7 @@ PULP_LIB_FC_SRCS_rt     += kernel/freq-one-per-domain.c
 else
 PULP_LIB_FC_SRCS_rt     += kernel/fll-v$(fll/version).c
 PULP_LIB_FC_SRCS_rt     += kernel/freq-v$(fll/version).c
+endif
 endif
 endif
 endif
@@ -167,6 +172,10 @@ endif
 endif
 
 ifeq '$(pulp_chip_family)' 'pulpissimo'
+PULP_LIB_FC_SRCS_rt += kernel/pulpissimo/pulpissimo.c	
+endif
+
+ifeq '$(pulp_chip_family)' 'stellissimo'
 PULP_LIB_FC_SRCS_rt += kernel/pulpissimo/pulpissimo.c	
 endif
 
