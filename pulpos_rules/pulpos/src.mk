@@ -67,3 +67,10 @@ PULP_CFLAGS += -DRT_CONFIG_PWM_ENABLED
 PULP_SRCS += drivers/pwm/pwm.c
 PULP_ASM_SRCS += drivers/pwm/pwm_asm.S
 endif
+
+# PWM
+ifeq '$(pulp_chip_family)' 'stellissimo'
+PULP_CFLAGS += -DRT_CONFIG_PWM_ENABLED
+PULP_SRCS += drivers/pwm/pwm.c
+#PULP_ASM_SRCS += drivers/pwm/pwm_asm.S
+endif

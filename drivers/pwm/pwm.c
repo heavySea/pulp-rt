@@ -161,7 +161,7 @@ void gap_pwm_timer_free(numPwmTimerT nTimer){
  *          channel: the number of channel
  */
 void gap_pwm_timer_event_set (unsigned char nEvt, numPwmTimerT nTimer, PwmTimerLutChannelT channel){
-    unsigned int Val = soc_eu_eventMask_get(SOC_FC_MASK_MSB);
+    /*unsigned int Val = soc_eu_eventMask_get(SOC_FC_MASK_MSB);
     gap_pwm_timer_t timer;
     timer.Raw = gap_pwm_timer_evt_reg_read();
     timer.timerEvt.evt_en |= (0x1 << nEvt);
@@ -184,7 +184,7 @@ void gap_pwm_timer_event_set (unsigned char nEvt, numPwmTimerT nTimer, PwmTimerL
             break;
     }
     soc_eu_eventMask_set(SOC_FC_MASK_MSB, Val);
-    gap_pwm_timer_evt_reg_cfg(timer.Raw);
+    gap_pwm_timer_evt_reg_cfg(timer.Raw);*/
 }
 
 /*
@@ -193,9 +193,10 @@ void gap_pwm_timer_event_set (unsigned char nEvt, numPwmTimerT nTimer, PwmTimerL
  *          nEvt:   the number of event
  */
 void gap_pwm_timer_int_wait_and_clear(unsigned char nEvt){
-    volatile unsigned int * Evt = &pwmEventsStatus;
+    /*volatile unsigned int * Evt = &pwmEventsStatus;
     while ((*Evt&(0x1<<nEvt)) ==  0) eu_evt_maskWaitAndClr(1<<PLP_RT_NOTIF_EVENT);
     pwmEventsStatus = __builtin_bitinsert_r(pwmEventsStatus, 0, 1, nEvt);
+    */
 }
 
 /*
@@ -206,7 +207,7 @@ void gap_pwm_timer_int_wait_and_clear(unsigned char nEvt){
  *          channel: the number of channel
  */
 void gap_pwm_timer_event_disable (unsigned char nEvt, numPwmTimerT nTimer, PwmTimerLutChannelT channel){
-    unsigned int Val = soc_eu_eventMask_get(SOC_FC_MASK_MSB);
+    /*unsigned int Val = soc_eu_eventMask_get(SOC_FC_MASK_MSB);
     gap_pwm_timer_t timer;
     timer.Raw = gap_pwm_timer_evt_reg_read();
     timer.timerEvt.evt_en &= ~(0x1 << nEvt);
@@ -229,19 +230,20 @@ void gap_pwm_timer_event_disable (unsigned char nEvt, numPwmTimerT nTimer, PwmTi
             break;
     }
     soc_eu_eventMask_set(SOC_FC_MASK_MSB, Val);
-    gap_pwm_timer_evt_reg_cfg(timer.Raw);
+    gap_pwm_timer_evt_reg_cfg(timer.Raw);*/
 }
 
 /*
  *  Disable all these 4 events
  */
 void gap_pwm_timer_event_all_disable(){
-    unsigned int Val = soc_eu_eventMask_get(SOC_FC_MASK_MSB);
+    /*unsigned int Val = soc_eu_eventMask_get(SOC_FC_MASK_MSB);
     gap_pwm_timer_t timer;
     timer.timerEvt.evt_en = 0;
     Val = (Val | (0xF<<(ADV_TIMER_EVENT0-32)));
     soc_eu_eventMask_set(SOC_FC_MASK_MSB, Val);
     gap_pwm_timer_evt_reg_cfg(timer.Raw);
+    */
 }
 
 
