@@ -61,7 +61,7 @@
 #endif
 #include "rt/rt_spim.h"
 #include "rt/rt_rtc.h"
-#if PULP_CHIP_FAMILY == CHIP_GAP
+#if PULP_CHIP_FAMILY == CHIP_GAP || PULP_CHIP_FAMILY == CHIP_STELLISSIMO
 #include "rt/rt_pwm.h"
 #endif
 //#if defined(APB_SOC_VERSION) && APB_SOC_VERSION == 1
