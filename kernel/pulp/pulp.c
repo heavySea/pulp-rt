@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 ETH Zurich, University of Bologna and GreenWaves Technologies
+ * Copyright (C) 2019 ETH Zurich, University of Bologna and GreenWaves Technologies
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-#ifndef __PMSIS__DATA__DATA_H__
-#define __PMSIS__DATA__DATA_H__
+/*
+ * Authors: Germain Haugou, ETH (germain.haugou@iis.ee.ethz.ch)
+ */
 
-#include "rt/rt_api_decl.h"
-#include "udma.h"
-#include "cpi.h"
-#include "i2s.h"
-#include "spi.h"
-#include "i2c.h"
-#include "uart.h"
+#include "rt/rt_api.h"
+
+#ifdef ARCHI_FPGA_FREQUENCY
+
+__attribute__((weak)) int __rt_fpga_fc_frequency = ARCHI_FPGA_FREQUENCY;
+__attribute__((weak)) int __rt_fpga_periph_frequency = ARCHI_FPGA_FREQUENCY;
 
 #endif
-

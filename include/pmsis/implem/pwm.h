@@ -14,16 +14,23 @@
  * limitations under the License.
  */
 
-#ifndef __PMSIS__DATA__DATA_H__
-#define __PMSIS__DATA__DATA_H__
+#ifndef __PMSIS_IMPLEM_PWM_H__
+#define __PMSIS_IMPLEM_PWM_H__
 
-#include "rt/rt_api_decl.h"
-#include "udma.h"
-#include "cpi.h"
-#include "i2s.h"
-#include "spi.h"
-#include "i2c.h"
-#include "uart.h"
+#ifdef PWM_VERSION
+
+#include "pmsis/drivers/pwm.h"
+
+static inline void pi_pwm_timer_start(struct pi_device *device)
+{
+    pi_pwm_ioctl(device, PI_PWM_TIMER_COMMAND, (void *) PI_PWM_CMD_START);
+}
+
+static inline void pi_pwm_timer_stop(struct pi_device *device)
+{
+    pi_pwm_ioctl(device, PI_PWM_TIMER_COMMAND, (void *) PI_PWM_CMD_STOP);
+}
 
 #endif
 
+#endif
