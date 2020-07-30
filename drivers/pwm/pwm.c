@@ -136,7 +136,16 @@ void gap_pwm_timer_all_channel_config(numPwmTimerT nTimer, unsigned int thCh0, u
 int gap_pwm_timer_alloc(){
     numPwmTimerT nTimer;
     if (pwmTimerAlloc == 0xF) return -1;
-    nTimer = __builtin_fl1((~pwmTimerAlloc)&0xF);
+    //Find out which last bit position was set
+    #if !defined(RV_ISA_RV32)
+        //does not work with ibex
+        nTimer = __builtin_fl1((~pwmTimerAlloc)&0xF);
+    #else
+        // unset rightmost bit and xor with number itself        
+        nTimer = (( pwmTimerAlloc & (pwmTimerAlloc-1)) ^ pwmTimerAlloc);
+    #endif
+    
+
     pwmTimerAlloc |= (0x1 << nTimer);
     nTimer = 3-nTimer;
     gap_pwm_timer_en(nTimer);
