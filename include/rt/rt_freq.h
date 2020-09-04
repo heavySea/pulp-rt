@@ -255,7 +255,8 @@ static inline int rt_freq_set(rt_freq_domain_e domain, unsigned int freq);
   #define __RT_FLL_CL 2
   #define __RT_FLL_PERIPH 1
   #define __RT_FLL_FC 0
-  #elif PULP_CHIP == CHIP_PULPISSIMO || PULP_CHIP == CHIP_PULPISSIMO_V1 || PULP_CHIP == CHIP_STELLISSIMO
+  #elif PULP_CHIP == CHIP_PULPISSIMO || PULP_CHIP == CHIP_PULPISSIMO_V1 
+  //|| PULP_CHIP == CHIP_STELLISSIMO
   #define __RT_FLL_CL 2
   #define __RT_FLL_PERIPH 1
   #define __RT_FLL_FC 0
